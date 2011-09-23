@@ -1,0 +1,16 @@
+{
+  "name": "boutique-as400",
+  "version": "0.0.1",
+  "description": "utilities for As400 and boutique",
+  "author": "Marcello Nuccio <marcello.nuccio@gmail.com>",
+  "dependencies": {
+    "connect": "1.7.x",
+    "jake": "~0.1.14"
+  },
+  "devDependencies": {
+    "uglify-js": "~1.0.7",
+    "cradle": "0.5.x",
+    "glob": "2.0.x"
+  },
+  "engines": { "node": "~0.4.12" }
+}
