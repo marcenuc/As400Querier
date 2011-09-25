@@ -1,4 +1,4 @@
-package it.nuccioservizi.tailor.as400;
+package it.nuccioservizi.as400querier;
 
 import java.util.Properties;
 

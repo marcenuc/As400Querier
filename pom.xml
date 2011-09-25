@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>it.nuccioservizi.as400</groupId>
-	<artifactId>boutique-connector</artifactId>
+	<groupId>it.nuccioservizi.as400querier</groupId>
+	<artifactId>as400-querier</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BoutiqueAs400</name>
-	<description>Connect boutique to as400.</description>
+	<name>As400Querier</name>
+	<description>Query an AS/400 server and returns a JSON object.</description>
 	<dependencies>
 		<dependency>
 			<groupId>it.nuccioservizi.jars</groupId>
@@ -16,6 +16,22 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.8.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.2.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>r09</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mvel</groupId>
+			<artifactId>mvel2</artifactId>
+			<version>2.0.19</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -39,7 +55,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>it.nuccioservizi.tailor.as400.Querier</mainClass>
+							<mainClass>it.nuccioservizi.as400querier.AppCli</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
