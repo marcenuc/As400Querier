@@ -1,8 +1,4 @@
 SELECT 
-MDATBO AS data,
-MNUMBO AS numero,
-MENTEN AS ente_numerazione,
-MCODNU AS codice_numerazione,
 MCODCL AS codice_cliente,
 MCLIDI AS tipo_magazzino,
 MCODMA AS codice_magazzino,
