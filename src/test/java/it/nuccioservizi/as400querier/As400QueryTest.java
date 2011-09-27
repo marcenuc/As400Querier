@@ -1,7 +1,5 @@
 package it.nuccioservizi.as400querier;
 
-import it.nuccioservizi.as400querier.As400Query;
-
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -30,6 +28,12 @@ public class As400QueryTest {
 	@Test(dataProvider = "predefinedQueries")
 	public static void itShouldAcceptAllPredefinedQueries(final File queryFile) throws IOException {
 		As400Query.fromFile(queryFile);
+	}
+
+	@SuppressWarnings("unused")
+	@Test
+	public static void itShouldAllowForFunctionsInColumns() {
+		new As400Query("SELECT SUM(A) AS sa FROM T WHERE 1");
 	}
 
 	@Test(dataProvider = "parameterizedQueries")
