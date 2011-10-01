@@ -11,7 +11,7 @@ import com.google.common.collect.ImmutableMap;
 public class ArgsParserTest {
 	@Test
 	public static void itShouldAcceptASingleArgumentAsTheQueryName() throws IOException {
-		final ArgsParser parser = new ArgsParser(new String[] { "scalarini" });
+		final ArgsParser parser = new ArgsParser(new String[] { "modelli" });
 		parser.getQuery();
 	}
 
