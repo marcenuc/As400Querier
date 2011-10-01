@@ -33,7 +33,7 @@ public class As400QueryTest {
 	@SuppressWarnings("unused")
 	@Test
 	public static void itShouldAllowForFunctionsInColumns() {
-		new As400Query("SELECT SUM(A) AS sa FROM T WHERE 1");
+		new As400Query("SELECT SUM(A) AS SA FROM T WHERE 1");
 	}
 
 	@Test(dataProvider = "parameterizedQueries")
@@ -44,14 +44,14 @@ public class As400QueryTest {
 
 	@Test(expectedExceptions = Exception.class, expectedExceptionsMessageRegExp = "(?s)\\[Error: could not access: a; in class:.*")
 	public static void itShouldThrowIllegalArgumentExceptionIfMissingQueryVars() {
-		final As400Query query = new As400Query("SELECT A AS a FROM T WHERE @{a}");
+		final As400Query query = new As400Query("SELECT A AS A FROM T WHERE @{a}");
 		query.getSqlQuery(ImmutableMap.of("c", "c"));
 	}
 
 	@DataProvider
 	public static Object[][] parameterizedQueries() {
 		return new Object[][] { //
-				{ "SELECT A AS a FROM T WHERE A = '@{a}'", ImmutableMap.of("a", "A_VAL"), "SELECT A AS a FROM T WHERE A = 'A_VAL'" } //
+				{ "SELECT A AS A FROM T WHERE A = '@{a}'", ImmutableMap.of("a", "A_VAL"), "SELECT A AS A FROM T WHERE A = 'A_VAL'" } //
 		};
 	}
 

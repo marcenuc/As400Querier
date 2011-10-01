@@ -14,7 +14,7 @@ import org.mvel2.templates.TemplateCompiler;
 import org.mvel2.templates.TemplateRuntime;
 
 public class As400Query {
-	private static final Pattern	QUERY_PATTERN	= Pattern.compile("\\ASELECT\\s+(?:[A-Z0-9$_()]+ AS ([a-zA-Z0-9_]+),\\s*)*[A-Z0-9$_()]+ AS ([a-zA-Z0-9_]+)\\s+FROM [A-Z0-9$_.]+\\s+WHERE (?:.|\\s)+");
+	private static final Pattern	QUERY_PATTERN	= Pattern.compile("\\ASELECT\\s+(?:[A-Z0-9$_()]+ AS ([A-Z0-9_]+),\\s*)*[A-Z0-9$_()]+ AS ([A-Z0-9_]+)\\s+FROM [A-Z0-9$_.]+\\s+WHERE (?:.|\\s)+");
 
 	public static As400Query fromFile(final File queryFile) throws IOException {
 		return new As400Query(loadFile(queryFile));
