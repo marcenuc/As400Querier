@@ -21,7 +21,7 @@ public class ArgsParser {
 
 	As400Query getQuery() throws IOException {
 		final String queryName = args[0];
-		if (!queryName.matches("^[a-z]+$")) {
+		if (!queryName.matches("^[a-z0-9]+$")) {
 			throw new IllegalArgumentException("Invalid query name.");
 		}
 		final File queryFile = new File(QUERIES_FOLDER, queryName + ".sql");
