@@ -2,3 +2,6 @@ local.properties
 /target/
 /node_modules/
 /test-output/
+
+.*.swp
+.*.un~
