@@ -10,6 +10,8 @@ apply plugin: 'java'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 sourceCompatibility = 1.7
 
+test.useTestNG()
+
 apply plugin: 'application'
 mainClassName = 'it.nuccioservizi.as400querier.AppCli'
 
