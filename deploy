@@ -1,0 +1,14 @@
+#!/bin/sh
+DEPLOY_SERVER="${1:-boutique}"
+DEPLOY_FOLDER="${2:-/home/marcenuc}"
+
+# Sync looking at contents, not timestamps.
+rsync="rsync -vcrlpgoD"
+
+root="$(dirname "$0")"
+
+gradle clean \
+  installApp
+
+$rsync --delete build/install/As400Querier/ "$DEPLOY_SERVER:$DEPLOY_FOLDER/As400Querier/"
+$rsync --delete queries/ "$DEPLOY_SERVER:$DEPLOY_FOLDER/As400Querier/queries/"
