@@ -15,7 +15,7 @@ To configure the eclipse project, launch:
 
 and import the existing project in Eclipse.
 
-Use `gradle distTar` to build a distributable package.
+Use `gradle distTar` to build a distributable package. Use `gradle installApp` to install into `build/install/`.
 
 ## Usage
 
