@@ -67,32 +67,41 @@ public class AppCli {
         try (final Statement statement = conn.createStatement(
             ResultSet.TYPE_FORWARD_ONLY,
             ResultSet.CONCUR_READ_ONLY)) {
-          try (final ResultSet results = statement.executeQuery(argsParser
-              .getQuery().getSqlQuery(argsParser.getVars()))) {
+          final As400Query query = argsParser.getQuery();
+          final String sql = query.toSql(argsParser.getVars());
+          if (query.isUpdate()) {
+            final int updated = statement.executeUpdate(sql);
+            jg.writeNumberField("updated", updated);
+          } else {
+            try (final ResultSet results = statement.executeQuery(sql)) {
 
-            final ResultSetMetaData metadata = results.getMetaData();
-            final int lastColumnIndex = metadata.getColumnCount();
+              final ResultSetMetaData metadata = results.getMetaData();
+              final int lastColumnIndex = metadata.getColumnCount();
 
-            jg.writeArrayFieldStart("columnNames");
-            for (int columnIndex = 1; columnIndex <= lastColumnIndex; ++columnIndex) {
-              jg.writeString(CaseFormat.UPPER_UNDERSCORE.to(
-                  CaseFormat.LOWER_CAMEL,
-                  metadata.getColumnLabel(columnIndex)));
-            }
-            jg.writeEndArray();
-
-            jg.writeArrayFieldStart("rows");
-            while (results.next()) {
-              jg.writeStartArray();
+              jg.writeArrayFieldStart("columnNames");
               for (int columnIndex = 1; columnIndex <= lastColumnIndex; ++columnIndex) {
-                jg.writeString(getRecordString(results, columnIndex));
+                jg.writeString(CaseFormat.UPPER_UNDERSCORE.to(
+                    CaseFormat.LOWER_CAMEL,
+                    metadata.getColumnLabel(columnIndex)));
+              }
+              jg.writeEndArray();
+
+              jg.writeArrayFieldStart("rows");
+              while (results.next()) {
+                jg.writeStartArray();
+                for (int columnIndex = 1; columnIndex <= lastColumnIndex; ++columnIndex) {
+                  jg.writeString(getRecordString(results, columnIndex));
+                }
+                jg.writeEndArray();
               }
               jg.writeEndArray();
             }
           }
-          jg.writeEndArray();
         }
+      } catch (final Exception ex) {
+        jg.writeStringField("error", ex.getMessage());
       }
+
       jg.writeEndObject();
     }
   }

@@ -47,14 +47,14 @@ public class As400QueryTest {
       final Map<String, String> vars,
       final String expectedParsedQuery) {
     Assert.assertEquals(
-        new As400Query(sourceQuery).getSqlQuery(vars),
+        new As400Query(sourceQuery).toSql(vars),
         expectedParsedQuery);
   }
 
   @Test(expectedExceptions = Exception.class, expectedExceptionsMessageRegExp = "(?s)\\[Error: could not access: a; in class:.*")
   public static void itShouldThrowIllegalArgumentExceptionIfMissingQueryVars() {
     final As400Query query = new As400Query("SELECT A AS A FROM T WHERE @{a}");
-    query.getSqlQuery(ImmutableMap.of("c", "c"));
+    query.toSql(ImmutableMap.of("c", "c"));
   }
 
   @DataProvider
@@ -75,5 +75,14 @@ public class As400QueryTest {
       list[i] = new Object[] { queryFiles[i] };
     }
     return list;
+  }
+
+  @Test
+  public static void itDetectsUpdateQueries() {
+    final As400Query update = new As400Query("UPDATE T SET A = 1 WHERE B = 2");
+    Assert.assertTrue(update.isUpdate(), "shoud be an UPDATE query");
+
+    final As400Query select = new As400Query("SELECT A AS B FROM T WHERE C = 1");
+    Assert.assertFalse(select.isUpdate(), "should not be an UPDATE query");
   }
 }

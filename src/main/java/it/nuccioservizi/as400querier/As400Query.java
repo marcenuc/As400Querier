@@ -35,7 +35,11 @@ public class As400Query {
     this.queryTemplate = TemplateCompiler.compileTemplate(query);
   }
 
-  public String getSqlQuery(final Map<String, String> vars) {
+  public String toSql(final Map<String, String> vars) {
     return (String) TemplateRuntime.execute(queryTemplate, vars);
+  }
+
+  public boolean isUpdate() {
+    return new String(queryTemplate.getTemplate()).startsWith("UPDATE");
   }
 }
