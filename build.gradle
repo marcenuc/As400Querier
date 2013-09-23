@@ -1,0 +1,24 @@
+version = '0.2'
+
+apply plugin: 'project-report'
+apply plugin: 'build-announcements'
+
+apply plugin: 'eclipse'
+tasks.eclipse.dependsOn(cleanEclipse)
+
+apply plugin: 'java'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = 1.7
+
+apply plugin: 'application'
+mainClassName = 'it.nuccioservizi.as400querier.AppCli'
+
+repositories.mavenCentral()
+
+dependencies {
+  compile 'com.google.guava:guava:14.0.1'
+  compile 'org.codehaus.jackson:jackson-core-asl:1.8.5'
+  compile 'org.mvel:mvel2:2.0.19'
+  testCompile 'org.testng:testng:6.2.1'
+  runtime files('libs/jt400-7.10.jdbc40.jar')
+}

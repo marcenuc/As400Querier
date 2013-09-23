@@ -1,7 +1,16 @@
 local.properties
 /target/
+/build/
 /node_modules/
 /test-output/
+/tmp/
+
+/.gradle/
+
+/bin/
+/.classpath
+/.project
+/.settings/
 
 .*.swp
 .*.un~
