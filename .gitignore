@@ -12,6 +12,7 @@ local.properties
 /.classpath
 /.project
 /.settings/
+/test-output/
 
 # vim
 .*.swp
