@@ -1,16 +1,18 @@
+# private files
 local.properties
-/target/
-/build/
-/node_modules/
-/test-output/
+
 /tmp/
 
+# gradle
+/build/
 /.gradle/
 
+# eclipse
 /bin/
 /.classpath
 /.project
 /.settings/
 
+# vim
 .*.swp
 .*.un~
