@@ -23,7 +23,7 @@ Use `gradle distTar` to build a distributable package. Use `gradle installApp` t
 
 Create a `local.properties` file in the working directory. Look a `Property.java` for an enumeration of all properties.
 
-Put your queries in a `queries` folder in the working directory. Then, a query named `onequery` will go into `queries/onequery.sql`.
+Put your queries in a `queries` folder in the working directory: a query named `onequery` is found into `queries/onequery.sql`.
 
 Each query is parsed with [MVEL][mvel] as an [MVEL template][mvelt]. The parameters are taken from the command line as `parameter=value` pairs.
 
@@ -31,7 +31,7 @@ Each query is parsed with [MVEL][mvel] as an [MVEL template][mvelt]. The paramet
 
 To run the query `onequery` with parameters `a=b` and `c=d` use:
 
-    java -jar as400-querier.jar onequery a=b c=d
+    ./bin/As400Querier onequery a=b c=d
 
 [jt400]: http://jt400.sourceforge.net/
 [couchdb]: http://couchdb.apache.org/
