@@ -7,11 +7,15 @@ It was created to extract data from an AS/400 for consumption into a web applica
 
 ## Development
 
-The repository contains an eclipse project. Clone it and import the project in eclipse.
+Build is automated using [Gradle][gradle].
 
-It's also a Maven project and you can build a distributable package with:
+To configure the eclipse project, launch:
 
-    mvn package
+    gradle eclipse
+
+and import the existing project in Eclipse.
+
+Use `gradle distTar` to build a distributable package.
 
 ## Usage
 
@@ -33,3 +37,4 @@ To run the query `onequery` with parameters `a=b` and `c=d` use:
 [couchdb]: http://couchdb.apache.org/
 [mvel]: http://mvel.codehaus.org/
 [mvelt]: http://mvel.codehaus.org/MVEL+2.0+Templating+Guide
+[gradle]: http://www.gradle.org/
