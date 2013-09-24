@@ -100,6 +100,7 @@ public class AppCli {
         }
       } catch (final Exception ex) {
         jg.writeStringField("error", ex.getMessage());
+        System.err.println(ex.getMessage());
       }
 
       jg.writeEndObject();
